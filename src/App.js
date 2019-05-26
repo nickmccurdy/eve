@@ -7,18 +7,10 @@ export default function App() {
 
   useEffect(() => {
     async function fetchBalance() {
-      const web3 = new Web3(ethereum);
-
       try {
+        const web3 = new Web3(ethereum);
         const [account] = await ethereum.enable();
-
-        web3.eth.getBalance(account, (error, balanceWei) => {
-          if (error) {
-            console.error(error);
-          } else {
-            setBalance(web3.fromWei(balanceWei.toNumber(), "ether"));
-          }
-        });
+        setBalance(web3.utils.fromWei(await web3.eth.getBalance(account)));
       } catch (error) {
         console.error(error);
       }
