@@ -1,5 +1,6 @@
-/* global ethereum:false, Web3:false */
+/* global ethereum:false*/
 import { useEffect, useState } from "react";
+import Web3 from "web3";
 
 export default function App() {
   const [balance, setBalance] = useState();
