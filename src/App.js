@@ -1,4 +1,4 @@
-/* global ethereum:false*/
+/* global ethereum:false */
 import { useEffect, useState } from "react";
 import Web3 from "web3";
 
