@@ -8,13 +8,25 @@ export default function App() {
     async function fetchBalance() {
       const web3 = new Web3(ethereum);
 
-      await ethereum.enable();
+      try {
+        await ethereum.enable();
 
-      web3.eth.getAccounts((error, [account]) => {
-        web3.eth.getBalance(account, (error, balanceWei) => {
-          setBalance(web3.fromWei(balanceWei.toNumber(), "ether"));
+        web3.eth.getAccounts((error, [account]) => {
+          if (error) {
+            console.error(error);
+          } else {
+            web3.eth.getBalance(account, (error, balanceWei) => {
+              if (error) {
+                console.error(error);
+              } else {
+                setBalance(web3.fromWei(balanceWei.toNumber(), "ether"));
+              }
+            });
+          }
         });
-      });
+      } catch (error) {
+        console.error(error);
+      }
     }
 
     fetchBalance();
