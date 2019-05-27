@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Web3 from "web3";
 
 const App: React.FC = () => {
-  const [balance, setBalance] = useState();
+  const [balance, setBalance] = useState("");
 
   useEffect(() => {
     async function fetchBalance() {
@@ -19,7 +19,7 @@ const App: React.FC = () => {
     fetchBalance();
   });
 
-  return balance || "Loading...";
+  return <>{balance || "Loading..."}</>;
 };
 
 export default App;
