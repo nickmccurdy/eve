@@ -1,8 +1,8 @@
 /* global ethereum:false */
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Web3 from "web3";
 
-export default function App() {
+const App: React.FC = () => {
   const [balance, setBalance] = useState();
 
   useEffect(() => {
@@ -20,4 +20,6 @@ export default function App() {
   });
 
   return balance || "Loading...";
-}
+};
+
+export default App;
